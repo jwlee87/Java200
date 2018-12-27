@@ -1,7 +1,9 @@
 package io.github.wonnana.chapter.s075;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * 
@@ -18,7 +20,21 @@ public class RestDay {
 	
 	public static Calendar todate(String ss) {
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-		return null;
+		Date dd=new Date();
+		try {
+			dd=sdf.parse(ss);
+		} catch(ParseException e) {
+			
+		}
+		Calendar cal=Calendar.getInstance();
+		cal.setTime(dd);
+		return cal;
 	}
+	
+	public static String toYMD(Calendar dd) {
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(dd.getTime());
+	}
+	
 
 }
